@@ -29,6 +29,9 @@ class User():
         self._is_logged_in = False
         self.last_logged_in_at()
         return self._is_logged_in
+
+    def delete_comment(self, commentobj, id):
+        return "User Cannot Delete Comment"
   
     def can_edit(self, comment,id):
         if self.name == comment['author']:
@@ -47,3 +50,4 @@ class Admin(Moderator):
     def can_edit(self, comment,id):
         Comment().get_list()[id]['message'] = comment['message']
         return 'Edited'
+

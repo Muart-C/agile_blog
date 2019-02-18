@@ -30,6 +30,9 @@ class User():
         self._is_logged_in = False
         self.last_logged_in_at()
         return self._is_logged_in
+
+    def delete_comment(self, commentobj, id):
+        return "User Cannot Delete Comment"
   
   
 class Moderator(User):
@@ -38,5 +41,4 @@ class Moderator(User):
         return commentobj.delete_comment(id)
 
 class Admin(Moderator):
-    def __init__(self, name):
-        super().__init__(name)
+    pass

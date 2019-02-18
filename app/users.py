@@ -1,6 +1,6 @@
 from datetime import datetime
 from collections import namedtuple
-from app.comments import Comment
+from comments import Comment
 
 class User:
   def __init__(self, name):
@@ -172,4 +172,7 @@ class Admin(User):
   def __init__(self, name):
     super().__init__(name)
 
+user = User("sam")
+user.to_string("same")
+user.can_edit_own_comments(1,"sdd")
 

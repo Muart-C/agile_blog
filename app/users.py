@@ -29,6 +29,7 @@ class User():
     def log_out(self):
         self._is_logged_in = False
         self.last_logged_in_at()
+        return self._is_logged_in
   
   
 class moderator(User):

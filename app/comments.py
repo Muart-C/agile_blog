@@ -5,14 +5,18 @@ from collections import namedtuple
 class Comment:
 
     chat_messages = []
-    def __init__(self):
+    def __init__(self, author):
         # Comment Parameters
+        self.author = author
         self.messages = []
         self.replied_to =None
 
 
     def get_author(self):
         pass
+    
+    def get_message(self):
+        return self.messages
 
     def set_message(self, message, author, replied_to =None):
         """Sets message"""
@@ -44,8 +48,12 @@ class Comment:
         return datetime.datetime.now()
 
     def to_string(self):
-        pass
+        return self.chat_messages
 
+    def set_replied_to(self, value):
+        self._replied_to  = value
+    
+    
     def delete_comment(self, message_id):
         """Deletes comment from list"""
         # Check instance of message id is int and list is not empty

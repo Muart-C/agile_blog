@@ -11,5 +11,5 @@ class UsersTestClass (unittest.TestCase):
     def test_login(self):
         self.assertTrue(self.myuser.login(False))
 
-    def test_logout(self):
-        self.assertFalse(self.myuser.logout(True))
+    def test_log_out(self):
+        self.assertFalse(self.myuser.log_out())

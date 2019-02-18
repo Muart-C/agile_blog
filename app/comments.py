@@ -1,22 +1,31 @@
-import datetime
+from datetime import datetime
+from collections import namedtuple
 
 
 class Comment:
+
+    chat_messages = []
     def __init__(self):
         # Comment Parameters
         self.messages = []
+        self.replied_to =None
+
 
     def get_author(self):
         pass
 
-    def set_message(self, message, author):
+    def set_message(self, message, author, replied_to =None):
         """Sets message"""
-        self.messages.append({
-            "author": author,
-            "message": message,
-            "timestamp": datetime.datetime.now(),
-            "id": len(self.messages)
-        })
+        message_received = namedtuple('message',['message','replied_to','author','create_at'])
+        replied_to_value = ''
+        if self.replied_to != None:
+            replied_to_value = self.replied_to
+        else: None
+        if message != None and replied_to != None:
+            message = message_received(message,replied_to_value,author,self.created_at)
+
+        self.messages.append(message_received)
+        self.chat_messages.append(message_received)
 
     def get_list(self):
         return self.messages
@@ -27,8 +36,12 @@ class Comment:
             if message["id"] == id:
                 message["message"] = newmessage
 
+    @property
     def replied_to(self):
-        pass
+        return self.replied_to 
+
+    def created_at(self):
+        return datetime.datetime.now()
 
     def to_string(self):
         pass

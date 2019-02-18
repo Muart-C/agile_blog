@@ -31,10 +31,11 @@ class User():
         self.last_logged_in_at()
   
   
-class moderator(User):
-  def __init__(self, name):
-    super().__init__(name)
+class Moderator(User):
 
-class admin(User):
-  def __init__(self, name):
-    super().__init__(name)
+    def delete_comment(self, commentobj, id):
+        return commentobj.delete_comment(id)
+
+class Admin(Moderator):
+    def __init__(self, name):
+        super().__init__(name)
